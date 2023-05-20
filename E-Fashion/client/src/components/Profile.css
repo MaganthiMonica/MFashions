@@ -1,0 +1,80 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+
+.profile h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.profile h3 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.profile p {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.address-list {
+  margin-top: 20px;
+}
+
+.address-table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
+
+.address-table__table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.address-table__head {
+  background-color: #ccc;
+}
+
+.address-table__row:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.address-table__cell {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.address-table__cell:first-child {
+  text-align: left;
+}
+
+.address-table__add-btn {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #0d0e0d;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.address-table__add-btn:hover {
+  background-color: #7e7e7e;
+}

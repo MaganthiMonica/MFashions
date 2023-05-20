@@ -1,0 +1,92 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #98d3f577;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.logincontainer{
+  background-image: url("../assets/bg1.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position-y:20% ;
+}
+
+.login-form h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.login-form label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: #e6e6e6;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+}
+
+.login-form input[type="email"]:focus,
+.login-form input[type="password"]:focus {
+  outline: none;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+.login-form button[type="submit"] {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  border: none;
+  background-color: #4CAF50;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.login-form button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+.login-form .form-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.login-form .form-row input {
+  width: calc(50% - 5px);
+}
+
+.login-form .form-row label {
+  width: 45%;
+}
+
+.login-error-message {
+  color: red;
+  margin-top: 5px;
+  font-size: 14px;
+}

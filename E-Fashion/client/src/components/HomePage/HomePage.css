@@ -1,0 +1,49 @@
+.HomePage {
+    display: flex;
+    /* background-image: url("../../assets/clothes-bed-fast-fashion-concept-high-angle.jpg"); */
+    background-size: cover;
+    background-position: center; 
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .container {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;margin-left: 20px;
+justify-content: flex-start;
+
+  }
+
+  
+  .heading {
+    margin-top: 70px;
+font-size: 2rem;
+margin-left: 20px;
+  }
+  
+  .description {
+  font-weight: bold;
+  margin: 20px;
+  font-size: 20px;
+  }
+  .product-btn {
+    margin-left: 20px;
+    padding: 1rem 2rem;
+    background-color: #1b1b1bdc;
+    color: #faf5f5;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .product-btn:hover {
+    background-color: #353235f5;
+  }
+  
+
+
+ 
