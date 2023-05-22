@@ -15,7 +15,9 @@ const Cart = () => {
   const [instance, setInstance] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
+  const token = Cookies.get('token');
+  const [addressList, setAddressList] = useState({});
+console.log(addressList)
   let cartData = localStorage.getItem('cart');
   const userCart = cartData ? JSON.parse(cartData) : [];
 
@@ -25,6 +27,22 @@ const handleClearCart = () =>{
 
 }
 
+const fetchAddressData = async () => {
+  try {
+    const response = await fetch('http://localhost:5000/api/get_address', {
+      headers: { authentication: token },
+    });
+    const result = await response.json();
+    setAddressList(result);
+    // setSuccess(true);
+  } catch (error) {
+    console.log('error in response');
+  }
+};
+useEffect(() => {
+
+  fetchAddressData();
+}, [token]);
 
   useEffect(() => {
     const cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
@@ -98,6 +116,7 @@ const handleClearCart = () =>{
       setLoading(true);
       const token=Cookies.get('token')
       const { nonce } = await instance.requestPaymentMethod();
+      const selectedAddress = localStorage.getItem("selectedAddress");
       const response = await fetch(`http://localhost:5000/api/brainTree/payment`, {
         method: "POST",
         headers: {
@@ -107,7 +126,7 @@ const handleClearCart = () =>{
         body: JSON.stringify({
           nonce,
           cartItems,
-          
+          selectedAddress,
         }),
       });
       const { ok } = await response.json();
@@ -116,9 +135,11 @@ const handleClearCart = () =>{
         "Order placed and payment processed successfully; Continue shopping !",
         "success"
       );
+      localStorage.removeItem("cart");
+      setCartItems([]);
+      localStorage.removeItem("selectedAddress")
       setTimeout(() => {
-        localStorage.removeItem(cartItems);
-        setCartItems([]);
+        
         navigate("/order");
       }, 4000);
     } catch (error) {
@@ -176,6 +197,38 @@ const handleClearCart = () =>{
             <h6 className="summary-label">Total:</h6>
             <h6 className="summary-value total-price">{totalPrice()}</h6>
           </div>
+          <div className="mb-3 addressCartContainer">
+              <h5>Select an address:</h5>
+              {addressList.addresses && addressList.addresses.length > 0 ? (
+                <select
+                  name="address"
+                  onChange={(e) =>
+                    localStorage.setItem("selectedAddress", e.target.value)
+                  }
+                >
+                  <option value="" disabled>
+                    Select an address
+                  </option>
+                  {addressList.addresses.map((address) => (
+                    <option key={address._id} value={address._id}>
+                      {address.street}, {address.city}, {address.state}{" "}
+                      {address.zip}
+                    </option>
+                  ))}
+                </select>
+              ) : (
+                <>
+                  <p>No addresses found. </p>
+                  <p>
+                    Please{" "}
+                    <a href="/profile" className="link">
+                      add an address
+                    </a>{" "}
+                    before continuing.
+                  </p>
+                </>
+              )}
+            </div>
           <div className="checkout-btn-container">
           <div className="mt-2">
               {!clientToken || !userCart?.length ? (

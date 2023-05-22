@@ -11,7 +11,10 @@ type: String,
 default: 'Not Process',
 
 },
-
+shippingAddress:{
+type: mongoose.Schema.Types.ObjectId,
+ref: 'address',
+},
 products: [{
 type: mongoose.Schema.Types.ObjectId,
 ref: 'Products',
@@ -19,4 +22,4 @@ ref: 'Products',
 
 }, { timestamps: true });
 
-export default mongoose.model('Orders', ordersSchema);
+export default mongoose.model('Orders', ordersSchema);                                                                                                                                                                                                                                                                                                                                                                                                      

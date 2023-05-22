@@ -1,0 +1,66 @@
+.order-container {
+  margin-top: 20px;
+}
+
+.order-title {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.order-table th,
+.order-table td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.order-table th {
+  background-color: #dfe9ee;
+  text-align: left;
+  font-size: 20px;
+}
+
+.payment-status,
+.order-status {
+  text-transform: uppercase;
+}
+
+.payment-status.not-paid {
+  color: red;
+}
+
+.payment-status.refunded {
+  color: orange;
+}
+
+.order-status.cancelled {
+  color: red;
+}
+
+.order-date {
+  white-space: nowrap;
+}
+
+.product-item {
+  display: flex;
+  align-items: center;
+}
+
+.product-item img {
+  margin-right: 10px;
+}
+
+.cancel-button {
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.cancel-icon {
+  width: 20px;
+  height: 20px;
+}

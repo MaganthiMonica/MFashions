@@ -12,6 +12,7 @@ import jwt_decode from 'jwt-decode'
 import React from 'react';
 import Cookies from 'js-cookie';
 import { ToastContainer } from 'react-toastify';
+import Order from './components/Order/Order';
 
 function App() {
   const navigate = useNavigate();
@@ -51,6 +52,7 @@ function App() {
         <Route exact path="/shop" element={<Shop/>} />
         <Route exact path="/addAddress" element={<Updateaddress/>} />
         <Route exact path="/cartPage" element={<Cart/>} />
+        <Route exact path="/order" element={<Order/>} />
       </Routes>
   </>
   );

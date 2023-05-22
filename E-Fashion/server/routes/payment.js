@@ -32,8 +32,8 @@ paymentRouter.get("/brainTree/token", async (req, res) => {
 // route 2, payment
 paymentRouter.post("/brainTree/payment", allverifytoken, async (req, res) => {
     try {
-      const { nonce, cartItems } = req.body;
-      const productIds = cartItems.map((i) => i._id);
+      const { nonce, cartItems,  selectedAddress } = req.body;
+      const productIds = cartItems.map((i) => i._id);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
       const numberOfQty = cartItems.map((i) => i.numberOfQuantity);
       console.log(cartItems)
 
@@ -41,7 +41,7 @@ paymentRouter.post("/brainTree/payment", allverifytoken, async (req, res) => {
   
       const products = await productsmodel.find({ _id: { $in: productIds } });
       let total = 0;
-     
+    // here we are calculating the total amount by using product id
       products.forEach((p) => {
         const item = cartItems.find((i) => i._id.toString() === p._id.toString());
         if (item) {
@@ -75,18 +75,19 @@ paymentRouter.post("/brainTree/payment", allverifytoken, async (req, res) => {
             products: products,
             payment: result,
             buyer: req.id,
-          
+            shippingAddress:selectedAddress,
           });
         
           // Save the order
           const savedOrder = await order.save();
+          console.log(savedOrder)
       res.status(200).json({ ok: true });
       } else {
-        console.error(result.message);
+        console.error(result);
         res.status(500).send("Payment Failed");
       }
     } catch (error) {
-      console.error(error.message);
+      console.error(error);
       res.status(500).send("Internal Server Error");
     }
   });

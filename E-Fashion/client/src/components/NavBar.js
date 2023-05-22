@@ -21,12 +21,15 @@ useEffect(() => {
   const handleProfile = () =>{
     navigate('/profile')
   }
-
+const handleOrder = () =>{
+  navigate('/order')
+}
 const handleCart = () =>{
   navigate('/cartPage')
 }
   const handleLogout = () => {
     // handle logout logic
+    localStorage.removeItem("selectedAddress");
     Cookies.remove('token');
     navigate('/login')
   };
@@ -51,6 +54,7 @@ const handleCart = () =>{
             <li className="nav-item">
               <Link to="/Shop" className="nav-link">Shop</Link>
             </li>
+           
           </ul>
         </div>
         <div className="navbar-right">
@@ -72,6 +76,10 @@ const handleCart = () =>{
               <button className="btn btn-outline-primary" id="profile-btn" onClick={handleProfile}>
                  Profile
               </button>
+              <button className="btn btn-outline-primary" id="profile-btn" onClick={handleOrder}>
+                 order
+              </button>
+             
               <button className="btn btn-outline-primary" id="profile-btn" onClick={handleCart}>
               <img   style={{width:"30px", height:"30px"}}
                             src={require("../assets/shopping-cart.png")}
