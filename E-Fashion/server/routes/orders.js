@@ -1,6 +1,6 @@
 import{allverifytoken} from "../middleware/middleware.js";
-import ordersSchema from "../models/Orders.js"
 import express from "express";
+import ordersSchema from "../models/Orders.js"
 
 const routerOrder = express.Router();
 

@@ -4,11 +4,10 @@ import "./Order.css"
 
 const Order = () => {
     const [orders, setOrders] = useState([]);
-    const [selectedOrderId, setSelectedOrderId] = useState(null);
+    
 console.log(orders)
 
-    const selectedOrder = orders.find((order) => order._id === selectedOrderId);
-    console.log(selectedOrder)
+   
     const fetchOrders = async () => {
         try {
             const token=Cookies.get('token')
@@ -19,7 +18,7 @@ console.log(orders)
             },
           });
           const resultData = await response.json();
-          // console.log(resultData);
+          
           setOrders(resultData);
         } catch (error) {
           console.log(error);
@@ -96,9 +95,11 @@ console.log(orders)
                   {order.shippingAddress?.zipCode ?? 'null'}
                 </td>
                 <td>
-                  <button   style={{
+     
+               
+                  <button  style={{
+
                 cursor:
-                 
                 order.status === "Cancelled"
                     ? "not-allowed"
                     : "pointer",
@@ -115,22 +116,8 @@ console.log(orders)
                     Cancel
                   </button>
                 </td>
-                {/* <td>
-                  <button
-                    onClick={() => { handleCancel(order._id) }}
-                    style={{
-                      cursor: order.status === "Cancelled" ? "not-allowed" : "pointer",
-                      opacity: order.status === "Cancelled" ? 0.5 : 1,
-                    }}
-                    className="cancel-button"
-                  >
-                    <img
-                      src={require("../Order/cancel.png")}
-                      alt="Cancel"
-                      className="cancel-icon"
-                    />
-                  </button>
-                </td> */}
+                
+                
               </tr>
             ))}
           </tbody>
